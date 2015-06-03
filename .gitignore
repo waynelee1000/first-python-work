@@ -1,57 +1,58 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
+#Tip and Tax calculator when ordering food online
+# Description of tip and tax calculator
 
-# C extensions
-*.so
+#Philadelphia sales tax is .08
+#Tip is either .1 or .15
+# setup in three stages
+#store rawuserinput  into a variable called initialprice 
+#give option for store tax yes or no ( 1 or 2) store tax=.08
+#store tip1= .1 give as option 1
+#store tip2=.15 give as option 2
+#store userinput= tip3 if they want a custom tip
 
-# Distribution / packaging
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*,cover
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
+#salestax=.08
+#tip1=.1
+#tip2=.15
+def priceforfood():
+    
+    userPrice= input("How much does the food cost on the menu?")
+    usertaxdecision= raw_input("Does the food have tax? \n1)yes \n2)no")
+    if usertaxdecision == "1":
+        userPrice1 = userPrice*1.08
+        print "$ %0.2f" %userPrice1
+        print''
+    
+    elif usertaxdecision == "2":
+        print userPrice
+        print''
+    else:
+        print "Please pick a valid option."
+        print''
+        print priceforfood()
+    
+    usertipinput = raw_input("How much tip do you want to pay? \n1)10% \n2)15% \n3)Your own amount \n4)0%")
+    if usertipinput == "1":
+        userTipprice = userPrice*.10
+        totalPrice = userPrice1+userTipprice
+        print "$ %0.2f" %userTipprice
+        print ""
+        print "Total price is $ %0.2f" %totalPrice
+        print priceforfood()
+    if usertipinput == "2":
+        userTipprice = userPrice*.15
+        totalPrice = userPrice1+userTipprice
+        print "$ %0.2f" %userTipprice
+        print""
+        print "Total price is $ %0.2f" %totalPrice
+        print priceforfood()
+    if usertipinput == "3":
+        rawusertip = input("please input tip percentage in decimal form please")
+        userTipprice= userPrice*rawusertip
+        totalPrice= userPrice1+userTipprice
+        print "$ %0.2f" %userTipprice
+        print ""
+        print "Total price is $ %0.2f" %totalPrice
+        print priceforfood()
+    if usertipinput == "4":
+        print priceforfood()
+priceforfood()
